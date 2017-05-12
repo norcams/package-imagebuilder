@@ -1,6 +1,6 @@
 NAME=imagebuilder
 VERSION=0.1
-PACKAGE_VERSION=1
+PACKAGE_VERSION=4
 DESCRIPTION=package.description
 URL=package.url
 MAINTAINER="http://norcams.org"
@@ -13,6 +13,7 @@ package: rpm
 .PHONY: clean
 clean:
 	rm -fr /installdir
+	rm -fr /opt/imagebuilder
 	rm -f $(NAME)-$(VERSION)-*.rpm
 	rm -Rf vendor/
 
@@ -27,14 +28,16 @@ deps:
 .PHONY: build
 build:
 	mkdir vendor/
-	mkdir -p /installdir/opt/imagebuilder
+	mkdir -p /opt/imagebuilder
 	cd vendor && git clone https://github.com/norcams/imagebuilder
 	cd vendor/imagebuilder && git submodule update --init
-	rsync -avh vendor/imagebuilder/ /installdir/opt/imagebuilder/
-	virtualenv /installdir/opt/imagebuilder/
-	cd /installdir/opt/imagebuilder/ && bin/pip3 install -r requirements.txt
-	cd /installdir/opt/imagebuilder/ && bin/python setup.py install
-	echo "/opt/imagebuilder" > /installdir/opt/imagebuilder/lib/python3.4/site-packages/imagebuilder.egg-link
+	rsync -avh vendor/imagebuilder/ /opt/imagebuilder/
+	virtualenv /opt/imagebuilder/
+	cd /opt/imagebuilder/ && bin/pip3 install -r requirements.txt
+	cd /opt/imagebuilder/ && bin/python setup.py install
+	echo "/opt/imagebuilder" > /opt/imagebuilder/lib/python3.4/site-packages/imagebuilder.egg-link
+	mkdir -p /installdir/opt
+	cp -R /opt/imagebuilder /installdir/opt/
 
 .PHONY: rpm
 rpm:
