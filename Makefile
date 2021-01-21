@@ -20,7 +20,7 @@ clean:
 .PHONY: deps
 deps:
 	yum install -y gcc ruby-devel rpm-build
-	gem install -N fpm
+	gem install -N fpm --version 1.11.0
 	yum install -y epel-release
 	yum install -y python36 python36-devel git python36-pip git
 	pip3.6 install virtualenv
