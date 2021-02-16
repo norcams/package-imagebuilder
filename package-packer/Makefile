@@ -7,7 +7,7 @@ MAINTAINER="http://norcams.org"
 RELVERSION=7
 UPSTREAM=https://releases.hashicorp.com/packer/${VERSION}/packer_${VERSION}_linux_amd64.zip
 INSTALLDIR=/opt/${NAME}-install
-BINDIR=/usr/sbin
+BINDIR=/usr/bin
 
 .PHONY: default
 default: deps build rpm
