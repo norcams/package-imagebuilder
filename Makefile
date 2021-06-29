@@ -1,5 +1,5 @@
 NAME=imagebuilder
-VERSION=1.2
+VERSION=1.3
 PACKAGE_VERSION=1
 DESCRIPTION=package.description
 URL=package.url
@@ -19,8 +19,8 @@ clean:
 
 .PHONY: deps
 deps:
-	yum install -y gcc ruby-devel rpm-build
-	gem install -N fpm --version 1.11.0
+	yum install -y gcc rpm-build yum rh-ruby23 rh-ruby23-ruby-devel
+	source /opt/rh/rh-ruby23/enable; gem install -N fpm --version 1.11.0
 	yum install -y epel-release
 	yum install -y python36 python36-devel git python36-pip git
 	pip3.6 install virtualenv
@@ -41,7 +41,7 @@ build:
 
 .PHONY: rpm
 rpm:
-	/usr/local/bin/fpm -s dir -t rpm \
+	source /opt/rh/rh-ruby23/enable; /opt/rh/rh-ruby23/root/usr/local/bin/fpm -s dir -t rpm \
 		-n $(NAME) \
 		-v $(VERSION) \
 		--iteration "$(PACKAGE_VERSION).el$(RELVERSION)" \
