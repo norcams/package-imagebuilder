@@ -19,6 +19,7 @@ clean:
 
 .PHONY: deps
 deps:
+	test -f /etc/centos-release && yum -y install centos-release-scl
 	yum install -y gcc rpm-build yum rh-ruby23 rh-ruby23-ruby-devel
 	source /opt/rh/rh-ruby23/enable; gem install -N fpm --version 1.11.0
 	yum install -y epel-release
