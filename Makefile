@@ -1,6 +1,6 @@
 NAME=imagebuilder
-VERSION=1.12
-PACKAGE_VERSION=2
+VERSION=1.13
+PACKAGE_VERSION=1
 DESCRIPTION=package.description
 URL=package.url
 MAINTAINER="http://norcams.org"
