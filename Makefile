@@ -1,10 +1,10 @@
 NAME=imagebuilder
-VERSION=1.13
+VERSION=1.14
 PACKAGE_VERSION=1
 DESCRIPTION=package.description
 URL=package.url
 MAINTAINER="http://norcams.org"
-RELVERSION=7
+DIST='el7'
 
 .PHONY: default
 default: deps build rpm
@@ -45,7 +45,7 @@ rpm:
 	source /opt/rh/rh-ruby23/enable; /opt/rh/rh-ruby23/root/usr/local/bin/fpm -s dir -t rpm \
 		-n $(NAME) \
 		-v $(VERSION) \
-		--iteration "$(PACKAGE_VERSION).el$(RELVERSION)" \
+		--iteration "$(PACKAGE_VERSION).$(DIST)" \
 		--description "$(shell cat $(DESCRIPTION))" \
 		--url "$(shelpl cat $(URL))" \
 		--maintainer "$(MAINTAINER)" \
