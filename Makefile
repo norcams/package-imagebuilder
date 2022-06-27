@@ -4,7 +4,7 @@ PACKAGE_VERSION=1
 DESCRIPTION=package.description
 URL=package.url
 MAINTAINER="http://norcams.org"
-DIST='el7'
+DIST=el7
 
 .PHONY: default
 default: deps build rpm
