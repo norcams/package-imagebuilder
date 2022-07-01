@@ -1,5 +1,5 @@
 NAME=imagebuilder
-VERSION=1.23
+VERSION=1.24
 PACKAGE_VERSION=1
 DESCRIPTION=package.description
 URL=package.url
