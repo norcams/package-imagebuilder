@@ -1,5 +1,5 @@
 NAME=imagebuilder
-VERSION=1.36
+VERSION=1.37
 PACKAGE_VERSION=1
 DESCRIPTION=package.description
 URL=package.url
@@ -32,8 +32,7 @@ clean:
 deps:
 	yum install -y gcc rpm-build ruby ruby-devel git
 	gem install -N fpm --version 1.11.0
-	yum install -y epel-release
-	yum install -y python36 python36-devel python3-pip python3-virtualenv
+	yum install -y python39 python39-devel
 
 .PHONY: build
 build:
@@ -42,11 +41,11 @@ build:
 	cd vendor && git clone https://github.com/norcams/imagebuilder
 	cd vendor/imagebuilder && git submodule update --init
 	rsync -avh vendor/imagebuilder/ /opt/imagebuilder/
-	python3.6 -m venv /opt/imagebuilder/
+	python3.9 -m venv /opt/imagebuilder/
 	cd /opt/imagebuilder/ && bin/python -m pip install --upgrade pip
 	cd /opt/imagebuilder/ && bin/python -m pip install -r requirements.txt
 	cd /opt/imagebuilder/ && bin/python setup.py install
-	echo "/opt/imagebuilder" > /opt/imagebuilder/lib/python3.6/site-packages/imagebuilder.egg-link
+	echo "/opt/imagebuilder" > /opt/imagebuilder/lib/python3.9/site-packages/imagebuilder.egg-link
 	mkdir -p /installdir/opt
 	cp -R /opt/imagebuilder /installdir/opt/
 
