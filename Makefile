@@ -33,8 +33,8 @@ deps:
 	dnf module reset ruby -y
 	dnf install -y @ruby:3.0
 	yum install -y gcc rpm-build ruby-devel git
-	gem install -N
-	yum install -y python39 python39-devel
+	gem install -N fpm
+	dnf install -y python39 python39-devel
 
 .PHONY: build
 build:
